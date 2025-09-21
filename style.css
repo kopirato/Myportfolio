@@ -49,15 +49,43 @@ header h1 {
     margin-bottom: 10px;
 }
 
-.logo {
-    width: 150px;
-    height: auto;
-    border-radius: 50%;
-    border: 2px solid #0ff;
-    box-shadow: 0 0 15px #0ff;
-    animation: pulse 2s infinite alternate;
+
+/* === PROFILE IMAGE === */
+#profile-img {
+  width: 100%;               /* takes full width of container */
+  max-width: 260px;          /* limit size */
+  height: auto;              /* keep aspect ratio */
+  border-radius: 12px;       /* rounded corners */
+  object-fit: cover;         /* crop nicely */
+  display: block;
+  margin: 0 auto;            /* center horizontally */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* subtle shadow */
 }
 
+/* === PROJECT IMAGES === */
+[id^="project-img-"] {
+  width: 100%;               /* fill card width */
+  height: 180px;             /* fixed height for uniformity */
+  border-radius: 10px;
+  object-fit: cover;         /* ensure images crop instead of stretch */
+  background: #111;          /* fallback background */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+[id^="project-img-"]:hover {
+  transform: scale(1.05);    /* zoom on hover */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+/* === LOGO IMAGE === */
+header .logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;         /* keep logo neat */
+  display: block;
+    }
 @keyframes pulse {
     0% { transform: scale(1); filter: drop-shadow(0 0 10px #0ff); }
     100% { transform: scale(1.05); filter: drop-shadow(0 0 25px #0ff); }
