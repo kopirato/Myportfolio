@@ -34,6 +34,22 @@ header {
   border-radius: var(--radius);
   object-fit: cover;
 }
+/* Logo container */
+.logo {
+  width: 150px;      /* set width of logo area */
+  height: 80px;      /* set height of logo area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;  /* prevents logo from overflowing */
+}
+
+/* Logo image */
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;  /* keeps aspect ratio while fitting */
+}
 .name h2 { margin: 0; }
 .name p { font-size: 14px; color: var(--muted); }
 
