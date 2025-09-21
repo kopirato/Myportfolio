@@ -1,1 +1,60 @@
+// Typing effect
+const typedText = document.querySelector(".typed-text");
+const words = ["a Developer", "a Designer", "an Innovator"];
+let wordIndex = 0;
+let charIndex = 0;
+let currentWord = "";
+let isDeleting = false;
 
+function type() {
+  currentWord = words[wordIndex];
+  typedText.textContent = currentWord.substring(0, charIndex);
+
+  if (!isDeleting && charIndex < currentWord.length) {
+    charIndex++;
+    setTimeout(type, 120);
+  } else if (isDeleting && charIndex > 0) {
+    charIndex--;
+    setTimeout(type, 60);
+  } else {
+    if (!isDeleting) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+    } else {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(type, 200);
+    }
+  }
+}
+type();
+
+// Scroll animations
+const elements = document.querySelectorAll("[data-aos]");
+function checkScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < triggerBottom) {
+      el.classList.add("visible");
+    }
+  });
+}
+window.addEventListener("scroll", checkScroll);
+checkScroll();
+
+// Lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".lightbox .close");
+
+document.querySelectorAll(".lightbox-trigger").forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "block";
+    lightboxImg.src = img.src;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
